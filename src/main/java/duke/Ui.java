@@ -1,8 +1,12 @@
 package duke;
+import java.util.List;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Ui {
     private static final Scanner INPUT = new Scanner(System.in);
+    private static final DecimalFormat MONEY_FORMAT = new DecimalFormat("0.00");
+    private static final DecimalFormat NUMBER_FORMAT = new DecimalFormat("0.############");
 
     public String readCommand() {
         return INPUT.nextLine().trim();
@@ -42,5 +46,55 @@ public class Ui {
                    /exit
                    """;
         System.out.println(s);
+    }
+
+    public void showPortfolios(PortfolioBook portfolioBook) {
+        List<Portfolio> portfolios = portfolioBook.getPortfolios();
+        System.out.println("Portfolios (" + portfolios.size() + "):");
+        for (Portfolio portfolio : portfolios) {
+            String suffix = portfolio.getName().equals(portfolioBook.getActivePortfolioName()) ? " (active)" : "";
+            System.out.println(portfolio.getName() + suffix);
+        }
+    }
+
+    public void showAddedHolding(Holding holding) {
+        System.out.println("Added holding:");
+        System.out.println("Type: " + holding.getAssetType().toDisplay());
+        System.out.println("Ticker: " + holding.getTicker());
+        System.out.println("Quantity: " + formatNumber(holding.getQuantity()));
+    }
+
+    public void showHoldings(Portfolio portfolio) {
+        System.out.println("Portfolio: " + portfolio.getName());
+
+        List<Holding> holdings = portfolio.getHoldings();
+        int index = 1;
+        for (Holding holding : holdings) {
+            String priceText = holding.hasPrice() ? formatMoney(holding.getLastPrice()) : "-";
+            String valueText = holding.hasPrice() ? formatMoney(holding.getValue()) : "-";
+
+            System.out.println(index + " "
+                    + holding.getAssetType().name()
+                    + " "
+                    + holding.getTicker()
+                    + " "
+                    + formatNumber(holding.getQuantity())
+                    + " "
+                    + priceText
+                    + " "
+                    + valueText);
+            index++;
+        }
+
+        System.out.println("Total holdings: " + holdings.size());
+        System.out.println("Total value: " + formatMoney(portfolio.getPricedTotalValue()));
+    }
+
+    public static String formatMoney(double value) {
+        return MONEY_FORMAT.format(value);
+    }
+
+    public static String formatNumber(double value) {
+        return NUMBER_FORMAT.format(value);
     }
 }
