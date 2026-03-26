@@ -155,6 +155,7 @@ public class Ui {
     public void showPortfolioValue(Portfolio portfolio) {
         assert portfolio != null : "portfolio must not be null";
         System.out.println("Portfolio: " + portfolio.getName());
+        System.out.println("Current total value: " + formatMoney(portfolio.getCurrentTotalValue()));
         System.out.println("Realized P&L: " + formatSignedMoney(portfolio.getTotalRealizedPnl()));
         System.out.println("Unrealised P&L by holding:");
 

@@ -143,6 +143,7 @@ public class UiTest {
 
         String output = capturedOut.toString();
         assertTrue(output.contains("Portfolio: retirement"));
+        assertTrue(output.contains("Current total value: 1000.00"));
         assertTrue(output.contains("Realized P&L: +0.00"));
         assertTrue(output.contains("Unrealised P&L by holding:"));
         assertTrue(output.contains("BND: Quantity 10, Avg. Price = 70.00, Last Price = 70.00, Unrealised P&L = +0.00"));
