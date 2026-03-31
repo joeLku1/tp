@@ -97,20 +97,70 @@ CG2StocksTracker --> Storage
 
 The API of this component is specified in `Ui.java`.
 
-The `Ui` component is responsible for interacting with the user. It reads input commands and displays results or error messages.
+The `Ui` component is responsible for all command-line interaction with the user.
+It handles:
+
+- reading raw command input
+- displaying normal responses and error messages
+- printing formatted portfolio/holding summaries
+- formatting numeric values for display consistency
+
+The `Ui` class is intentionally stateless with respect to business data. It does not own portfolios, holdings, or command logic.
 
 ---
 
 ### How the UI works
 
-- `Ui` reads user input as a string
+- `CG2StocksTracker` calls `Ui.readCommand()` to read the next line from stdin
 
-- It forwards the input to `CG2StocksTracker`
+- `Ui.readCommand()` returns `/exit` when stdin is exhausted (for example, during redirected IO tests), allowing the app to terminate gracefully instead of crashing
 
-- It displays the output returned by the application
+- After command execution, `CG2StocksTracker` delegates all user-facing output to `Ui`
 
+- `Ui` prints either general messages (`showMessage`, `showError`) or domain-specific views (`showHoldings`, `showPortfolioValue`, `showPortfolioSummaries`)
 
-The UI does not perform any parsing or business logic.
+- Formatting helpers (`formatMoney`, `formatNumber`, `formatSignedMoney`) ensure a single, consistent text format across the application
+
+---
+
+### Key UI Methods
+
+- `readCommand()`
+Reads one command line and normalises end-of-input to `/exit`.
+
+- `showWelcome()` and `showGoodbye()`
+Display lifecycle messages when the application starts and exits.
+
+- `beginResponse()` and `endResponse()`
+Print visual separators so multi-line responses are easier to read in the terminal.
+
+- `showHelp()`
+Prints supported commands and option usage.
+
+- `showPortfolios()` and `showPortfolioSummaries()`
+Provide two portfolio-level views: active portfolio listing and alphabetical P&L summary view.
+
+- `showHoldings(...)`
+Supports both unfiltered and asset-type-filtered holding output with totals.
+
+- `showPortfolioValue()`
+Prints current value, realized P&L, and unrealized P&L breakdown per holding.
+
+- `showBulkUpdateResult()`
+Reports batch update success/failure counts and row-level errors.
+
+---
+
+### Design Considerations
+
+- Separation of concerns:
+`Ui` only formats and displays information. All validation, parsing, and model updates are handled by `Parser`, `CG2StocksTracker`, and model classes.
+
+- Testability:
+Most UI methods produce deterministic text output, which is suitable for IO-based regression testing.
+
+- Fail-safe stdin handling:
+Returning `/exit` at EOF prevents `NoSuchElementException` during automated runs with redirected input.
 
 ---
 
