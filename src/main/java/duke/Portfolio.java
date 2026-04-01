@@ -92,6 +92,23 @@ public class Portfolio {
         return updatedCount;
     }
 
+    public boolean setPriceForHolding(AssetType assetType, String ticker, double price) {
+        if (assetType == null) {
+            throw new IllegalArgumentException("assetType must not be null");
+        }
+
+        String normalizedTicker = ticker == null ? "" : ticker.trim().toUpperCase();
+        String key = makeKey(assetType, normalizedTicker);
+        Holding holding = holdings.get(key);
+
+        if (holding == null) {
+            return false;
+        }
+
+        holding.setLastPrice(price);
+        return true;
+    }
+
     public List<Holding> getHoldings() {
         return new ArrayList<>(holdings.values());
     }

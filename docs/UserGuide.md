@@ -165,7 +165,7 @@ Total unrealised P&L: sum across holdings.
 Example scenario:
 
 /add --type STOCK --ticker VOO --qty 1 --price 300
-/set --ticker VOO --price 600
+/set --type STOCK --ticker VOO --price 600
 /value
 
 Expected result summary:
