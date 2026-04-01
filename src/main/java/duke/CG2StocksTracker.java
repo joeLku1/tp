@@ -77,6 +77,9 @@ public class CG2StocksTracker {
         case VALUE:
             handleValue();
             return true;
+        case INSIGHTS:
+            handleInsights(command);
+            return true;
         case HELP:
             ui.showHelp();
             return true;
@@ -202,6 +205,64 @@ public class CG2StocksTracker {
     private void handleValue() throws AppException {
         Portfolio portfolio = portfolioBook.getActivePortfolio();
         ui.showPortfolioValue(portfolio);
+    }
+
+    private void handleInsights(ParsedCommand command) throws AppException {
+        InsightsOptions options = parseInsightsOptions(command.listTarget());
+        Portfolio portfolio = portfolioBook.getActivePortfolio();
+        ui.showInsightsTable(portfolio, options.filterType(), options.topN(), options.showChart());
+    }
+
+    private InsightsOptions parseInsightsOptions(String rawOptions) throws AppException {
+        if (rawOptions == null || rawOptions.isBlank()) {
+            return new InsightsOptions(null, null, false);
+        }
+
+        String[] tokens = rawOptions.trim().split("\\s+");
+        AssetType filterType = null;
+        Integer topN = null;
+        boolean showChart = false;
+
+        for (int i = 0; i < tokens.length; i++) {
+            String token = tokens[i].toLowerCase();
+
+            switch (token) {
+            case "--type":
+                if (i + 1 >= tokens.length) {
+                    throw new AppException("Usage: /insights [--type stock|etf|bond] [--top N] [--chart]");
+                }
+                try {
+                    filterType = AssetType.fromString(tokens[++i]);
+                } catch (IllegalArgumentException e) {
+                    throw new AppException(e.getMessage());
+                }
+                break;
+            case "--top":
+                if (i + 1 >= tokens.length) {
+                    throw new AppException("Usage: /insights [--type stock|etf|bond] [--top N] [--chart]");
+                }
+                try {
+                    topN = Integer.parseInt(tokens[++i]);
+                } catch (NumberFormatException e) {
+                    throw new AppException("Top count must be a positive integer.");
+                }
+                if (topN <= 0) {
+                    throw new AppException("Top count must be a positive integer.");
+                }
+                break;
+            case "--chart":
+                showChart = true;
+                break;
+            default:
+                throw new AppException("Unknown /insights option: " + tokens[i]
+                        + "\nUsage: /insights [--type stock|etf|bond] [--top N] [--chart]");
+            }
+        }
+
+        return new InsightsOptions(filterType, topN, showChart);
+    }
+
+    private record InsightsOptions(AssetType filterType, Integer topN, boolean showChart) {
     }
 
     private void save() throws AppException {
