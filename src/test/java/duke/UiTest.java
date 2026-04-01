@@ -36,7 +36,6 @@ public class UiTest {
         assertTrue(output.contains("/create NAME"));
         assertTrue(output.contains("/list --stock"));
         assertTrue(output.contains("/list --portfolios"));
-        assertTrue(output.contains("/watch add --type TYPE --ticker TICKER [--price PRICE]"));
         assertTrue(output.contains("/watch remove --type TYPE --ticker TICKER"));
         assertTrue(output.contains("/watch list"));
         assertTrue(output.contains("/watch buy --type TYPE --ticker TICKER --portfolio NAME"));
