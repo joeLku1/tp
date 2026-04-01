@@ -25,7 +25,10 @@ Available commands:
   Optional fees: --brokerage FEE --fx FEE --platform FEE
 /remove --type TYPE --ticker TICKER
   Optional fields: --qty QTY --price PRICE --brokerage FEE --fx FEE --platform FEE
-/set --ticker TICKER --price PRICE
+/watch remove --type TYPE --ticker TICKER
+/watch list
+/watch buy --type TYPE --ticker TICKER --portfolio NAME
+/set --ticker TICKER --price PRICE [--type TYPE]
 /setmany --file FILEPATH
 /value
 /insights [--type stock|etf|bond] [--top N] [--chart]
