@@ -2,6 +2,7 @@ package duke;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -106,5 +107,28 @@ public class PortfolioTest {
         portfolio.setPriceForTicker("VOO", 600);
 
         assertEquals(1700.0, portfolio.getCurrentTotalValue());
+    }
+
+    @Test
+    void setPriceForHolding_updatesOnlySpecifiedTypeAndTicker() {
+        Portfolio portfolio = new Portfolio("demo");
+        portfolio.addHolding(AssetType.STOCK, "VOO", 1, 300, 0);
+        portfolio.addHolding(AssetType.ETF, "VOO", 2, 350, 0);
+
+        boolean updated = portfolio.setPriceForHolding(AssetType.STOCK, "VOO", 600);
+
+        assertTrue(updated);
+        assertEquals(600.0, portfolio.getHolding(AssetType.STOCK, "VOO").getLastPrice());
+        assertEquals(350.0, portfolio.getHolding(AssetType.ETF, "VOO").getLastPrice());
+    }
+
+    @Test
+    void setPriceForHolding_missingHolding_returnsFalse() {
+        Portfolio portfolio = new Portfolio("demo");
+        portfolio.addHolding(AssetType.STOCK, "VOO", 1, 300, 0);
+
+        boolean updated = portfolio.setPriceForHolding(AssetType.BOND, "VOO", 90);
+
+        assertFalse(updated);
     }
 }
