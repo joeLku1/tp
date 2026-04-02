@@ -39,7 +39,7 @@ The application follows a layered command pipeline:
 5. `Storage` persists state after successful state-changing operations.
 
 [DIAGRAM PLACEHOLDER: docs/diagrams/architecture-overview-class.puml]
-[DIAGRAM PLACEHOLDER: docs/diagrams/command-dispatch-sequence.puml]
+![Remove Command Sequence](diagrams/remove-command-sequence.png)
 
 ### Core class responsibilities
 
@@ -179,8 +179,8 @@ Supported variants:
    - type filter -> filtered holdings.
    - default -> holdings for active portfolio, or portfolio names if none active.
 
-[DIAGRAM PLACEHOLDER: docs/diagrams/list-command-class.puml]
-[DIAGRAM PLACEHOLDER: docs/diagrams/list-command-sequence.puml]
+![List Command Class Diagram](diagrams/list-command-class.png)
+![List Command Sequence Diagram](diagrams/list-command-sequence.png)
 
 ### Error handling and validation
 
@@ -328,8 +328,8 @@ Variants:
 4. Save state.
 5. Print confirmation.
 
-[DIAGRAM PLACEHOLDER: docs/diagrams/set-command-class.puml]
-[DIAGRAM PLACEHOLDER: docs/diagrams/set-command-sequence.puml]
+![Set Command Class Diagram](diagrams/set-command-class.png)
+![Set Command Sequence Diagram](diagrams/set-command-sequence.png)
 
 ### Error handling and validation
 
@@ -474,8 +474,8 @@ Provides value and P&L summary for active portfolio.
 1. Resolve active portfolio.
 2. Compute and display totals and per-holding unrealized P&L.
 
-[DIAGRAM PLACEHOLDER: docs/diagrams/value-command-class.puml]
-[DIAGRAM PLACEHOLDER: docs/diagrams/value-command-sequence.puml]
+![Value Command Class Diagram](diagrams/value-command-class.png)
+![Value Command Sequence Diagram](diagrams/value-command-sequence.png)
 
 ### Error handling and validation
 
