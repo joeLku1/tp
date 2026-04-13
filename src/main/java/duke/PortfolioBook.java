@@ -79,7 +79,11 @@ public class PortfolioBook {
         if (name == null || name.isBlank()) {
             throw new AppException("Portfolio name cannot be blank");
         }
-        return name.trim();
+        String trimmed = name.trim();
+        if (trimmed.contains("|")) {
+            throw new AppException("Portfolio name cannot contain '|'");
+        }
+        return trimmed;
     }
 
     private String requirePortfolioKey(String name) throws AppException {
