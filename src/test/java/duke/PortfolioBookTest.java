@@ -39,6 +39,15 @@ public class PortfolioBookTest {
     }
 
     @Test
+    void createPortfolio_nameContainingDelimiter_throws() {
+        PortfolioBook book = new PortfolioBook();
+
+        AppException ex = assertThrows(AppException.class, () -> book.createPortfolio("my|portfolio"));
+
+        assertEquals("Portfolio name cannot contain '|'", ex.getMessage());
+    }
+
+    @Test
     void usePortfolio_acceptsMixedCaseName() throws AppException {
         PortfolioBook book = new PortfolioBook();
         book.createPortfolio("first");
