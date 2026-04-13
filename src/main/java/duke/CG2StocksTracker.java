@@ -437,11 +437,19 @@ public class CG2StocksTracker {
         AssetType filterType = null;
         Integer topN = null;
         boolean showChart = false;
+        
+        // Track which flags have been seen to reject duplicates
+        boolean seenType = false;
+        boolean seenTop = false;
+        boolean seenChart = false;
 
         for (int i = 0; i < tokens.length; i++) {
             String token = tokens[i].toLowerCase();
             switch (token) {
             case "--type":
+                if (seenType) {
+                    throw new AppException("Duplicate option: --type");
+                }
                 if (i + 1 >= tokens.length) {
                     throw new AppException("Usage: /insights [--type stock|etf|bond] [--top N] [--chart]");
                 }
@@ -450,8 +458,12 @@ public class CG2StocksTracker {
                 } catch (IllegalArgumentException e) {
                     throw new AppException(e.getMessage());
                 }
+                seenType = true;
                 break;
             case "--top":
+                if (seenTop) {
+                    throw new AppException("Duplicate option: --top");
+                }
                 if (i + 1 >= tokens.length) {
                     throw new AppException("Usage: /insights [--type stock|etf|bond] [--top N] [--chart]");
                 }
@@ -463,9 +475,14 @@ public class CG2StocksTracker {
                 if (topN <= 0) {
                     throw new AppException("Top count must be a positive integer.");
                 }
+                seenTop = true;
                 break;
             case "--chart":
+                if (seenChart) {
+                    throw new AppException("Duplicate option: --chart");
+                }
                 showChart = true;
+                seenChart = true;
                 break;
             default:
                 throw new AppException("Unknown /insights option: " + tokens[i]
