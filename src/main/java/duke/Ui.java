@@ -148,6 +148,11 @@ public class Ui {
                 .sorted((a, b) -> a.getName().compareToIgnoreCase(b.getName()))
                 .toList();
 
+        if (portfolios.isEmpty()) {
+            System.out.println("No portfolios available. Create one with /create NAME.");
+            return;
+        }
+
         System.out.println("Portfolios (alphabetical):");
         for (Portfolio portfolio : portfolios) {
             System.out.println(portfolio.getName()

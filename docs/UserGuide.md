@@ -147,6 +147,7 @@ Notes:
 - If no active portfolio exists, `/list` shows portfolio names.
 - Type-filtered list keeps the same table style but only one asset type.
 - `/list --portfolios` shows portfolio-level realized and unrealized P&L in alphabetical order.
+- If there are no portfolios yet, `/list --portfolios` shows a message prompting you to create one.
 - Holdings table columns are: `TYPE`, `TICKR`, `QTY`, `AVG_BUY`, `MKT_PRICE`, `VALUE`.
 - `AVG_BUY` is cost basis. `MKT_PRICE` is the latest market price reference. `VALUE = QTY x MKT_PRICE`.
 

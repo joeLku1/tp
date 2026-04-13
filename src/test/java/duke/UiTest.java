@@ -128,6 +128,18 @@ public class UiTest {
     }
 
     @Test
+    void showPortfolioSummaries_withNoPortfolios_printsHelpfulMessage() {
+        Ui ui = new Ui();
+        PortfolioBook book = new PortfolioBook();
+
+        ui.showPortfolioSummaries(book);
+
+        String output = capturedOut.toString();
+        assertTrue(output.contains("No portfolios available. Create one with /create NAME."));
+        assertTrue(!output.contains("Portfolios (alphabetical):"));
+    }
+
+    @Test
     void showBulkUpdateResult_withFailures_printsFailureRows() {
         Ui ui = new Ui();
         Storage.BulkUpdateResult result = new Storage.BulkUpdateResult(
