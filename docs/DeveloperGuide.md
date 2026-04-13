@@ -39,7 +39,6 @@ The application follows a layered command pipeline:
 5. `Storage` persists state after successful state-changing operations.
 
 ![Architecture Overview Class Diagram](diagrams/PNG/architecture-overview-class.png)
-![Remove Command Sequence](diagrams/PNG/remove-command-sequence.png)
 
 ### Core class responsibilities
 
