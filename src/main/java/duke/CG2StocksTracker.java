@@ -369,7 +369,8 @@ public class CG2StocksTracker {
                 + " of " + result.ticker()
                 + " (" + result.assetType().toDisplay() + ") into portfolio " + result.portfolioName()
                 + " at " + Ui.formatMoney(result.buyPrice())
-                + ". New quantity = " + Ui.formatNumber(result.resultingQuantity()));
+                + ". New quantity = " + Ui.formatNumber(result.resultingQuantity())
+                + ". Removed from watchlist.");
     }
 
     /**
