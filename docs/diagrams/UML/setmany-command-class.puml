@@ -23,7 +23,7 @@ class Portfolio {
 }
 
 class Ui {
-  + showMessage(message: String)
+  + showBulkUpdateResult(result: Storage.BulkUpdateResult)
 }
 
 CG2StocksTracker ..> PortfolioBook : getActivePortfolio()
