@@ -138,7 +138,7 @@ Note: VALUE = QTY x MKT_PRICE. AVG_BUY is cost basis.
 Portfolio: RishPortfolio
 Current total value: 1580.00
 Realized P&L: +0.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 VOO    STOCK      1.5   320.00   360.00     +60.00
@@ -157,7 +157,7 @@ Updated price: VOO = 600.00 (1 holding updated)
 Portfolio: RishPortfolio
 Current total value: 1940.00
 Realized P&L: +0.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 VOO    STOCK      1.5   320.00   600.00    +420.00
@@ -176,7 +176,7 @@ Sold 0.5 of VOO (stock) at 620.00, realized P&L = +150.00
 Portfolio: RishPortfolio
 Current total value: 1640.00
 Realized P&L: +150.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 VOO    STOCK        1   320.00   600.00    +280.00
@@ -195,7 +195,7 @@ Sold 0.5 of VOO (stock) at 600.00, realized P&L = +140.00
 Portfolio: RishPortfolio
 Current total value: 1340.00
 Realized P&L: +290.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 VOO    STOCK      0.5   320.00   600.00    +140.00
@@ -214,7 +214,7 @@ Sold 0.5 of VOO (stock) at 600.00, realized P&L = +140.00
 Portfolio: RishPortfolio
 Current total value: 1040.00
 Realized P&L: +430.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 QQQ    ETF          2   400.00   400.00      +0.00
@@ -232,7 +232,7 @@ Sold 2 of QQQ (etf) at 405.00, realized P&L = +10.00
 Portfolio: RishPortfolio
 Current total value: 240.00
 Realized P&L: +440.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 BND    BOND         3    80.00    80.00      +0.00
@@ -251,7 +251,7 @@ line 3 - ticker: MISSING reason: holding not found
 Portfolio: RishPortfolio
 Current total value: 246.00
 Realized P&L: +440.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 BND    BOND         3    80.00    82.00      +6.00
@@ -356,7 +356,7 @@ Multiple holdings found for ticker: VOO. Please specify --type.
 Portfolio: RishPortfolio
 Current total value: 1856.00
 Realized P&L: +440.00
-Unrealised P&L by holding:
+Unrealized P&L by holding:
 TICKR  TYPE       QTY      AVG     LAST      U_PNL
 -------------------------------------------------------
 BND    BOND         3    80.00    82.00      +6.00
