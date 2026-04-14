@@ -81,6 +81,7 @@ Given below are my contributions to the project.
 - Helped drive UI and output consistency during periods of frequent command evolution.
 - Supported integration by aligning parser/execution/UI output with tests and documentation.
 - Contributed to feature completion and release readiness by addressing CI failures quickly.
+- Contributed to v2.1 release, fixing issues highlighted in PE dry run.
 
 ### Review and mentoring contributions
 
