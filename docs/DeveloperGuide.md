@@ -22,9 +22,7 @@ Typical user characteristics:
 
 Track investment holdings clearly from the command line.
 
-It helps users see the current value of their assets and review simple performance data.
-
-It gives typing-oriented users a clear view of their holdings without spreadsheets or large trading platforms.
+It helps typing-oriented amateur investors see the current value of their assets, review simple performance data, and maintain a clear portfolio view without spreadsheets or large trading platforms.
 
 ## Design
 
