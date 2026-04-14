@@ -290,7 +290,7 @@ Note: VALUE = QTY x MKT_PRICE. AVG_BUY is cost basis.
 ----------------------------------------
 
 ----------------------------------------
-Portfolio name cannot be blank
+Portfolio name must not be blank
 ----------------------------------------
 
 
