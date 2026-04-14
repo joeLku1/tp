@@ -31,6 +31,7 @@ public class Storage {
     }
 
     public PortfolioBook load() throws AppException {
+        assert filePath != null : "Storage file path must not be null";
         createStorageFileIfMissing();
         assert Files.exists(filePath) : "Storage file should exist after initialization";
 
@@ -74,6 +75,7 @@ public class Storage {
                 applyActivePortfolio(portfolioBook, activePortfolioName);
             }
 
+            assert portfolioBook != null : "Loaded portfolio book cannot be null";
             return portfolioBook;
         } catch (IllegalArgumentException e) {
             throw new AppException(CORRUPTED_FILE_MESSAGE);
@@ -105,10 +107,12 @@ public class Storage {
     }
 
     public void save(PortfolioBook portfolioBook) throws AppException {
+        assert portfolioBook != null : "portfolioBook must not be null";
         if (portfolioBook == null) {
             throw new IllegalArgumentException("portfolioBook must not be null");
         }
         createStorageFileIfMissing();
+        assert Files.exists(filePath) : "Storage file should exist after creation";
 
         List<String> lines = new ArrayList<>();
         lines.add("ACTIVE|" + nullToEmpty(portfolioBook.getActivePortfolioName()));
@@ -133,6 +137,8 @@ public class Storage {
 
         try {
             Files.write(filePath, lines);
+            assert Files.exists(filePath) : "Storage file must exist after write";
+            assert Files.size(filePath) > 0 : "Storage file should contain data after write";
         } catch (IOException e) {
             throw new AppException("Unable to save storage file.");
         }
