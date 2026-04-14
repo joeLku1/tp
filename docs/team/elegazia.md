@@ -146,7 +146,7 @@ Given below are my contributions to the project.
 
 ### Code contributed
 
-* [RepoSense contribution link](https://nus-cs2113-ay2526-s2.github.io/tp-dashboard/?search=w09-4&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~other~test-code&since=2026-02-20T00%3A00%3A00&filteredFileName=&tabOpen=true&tabType=authorship&tabAuthor=YOUR_USERNAME&tabRepo=AY2526S2-CS2113-W09-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~other~test-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
+* [RepoSense contribution link](https://nus-cs2113-ay2526-s2.github.io/tp-dashboard/?search=w09-4&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~other~test-code&since=2026-02-20T00%3A00%3A00&filteredFileName=&tabOpen=true&tabType=authorship&tabAuthor=Elegazia&tabRepo=AY2526S2-CS2113-W09-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~other~test-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
 ---
 
@@ -164,7 +164,6 @@ Given below are my contributions to the project.
     * Refined descriptions of parser validation logic, including option parsing and error handling paths.
     * Added/updated UML sequence diagrams for `/set`, `/value`, and `/list` to match implemented behaviour.
     * Ensured DG explanations are consistent with current command contracts and no longer reflect outdated command signatures.
-    * Merged duplicate value-proposition paragraphs in the Developer Guide.
 
 ---
 
@@ -179,8 +178,7 @@ Given below are my contributions to the project.
 ### Contributions to team-based tasks
 
 * Helped prepare and release `v1.0`.
-* Supported team integration during refactoring-heavy phases.
-* Resolved git merge conflicts in `Ui.java` and `Parser.java` after concurrent changes.
+* Supported team integration during refactoring-heavy phases.*
 * Contributed to task coordination and keeping the team aligned with deadlines.
 
 ---
